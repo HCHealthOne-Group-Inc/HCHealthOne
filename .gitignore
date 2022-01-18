@@ -23,4 +23,4 @@
 hs_err_pid*
 
 # Ignore bak files from Visual Paradigm
-*.bak_[0-9][a-z]
+*.bak_*
