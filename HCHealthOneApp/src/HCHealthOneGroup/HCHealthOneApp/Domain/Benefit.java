@@ -10,6 +10,12 @@ public class Benefit {
 	public int discount;
 	public DiscountType discountType;
 	
+	/**
+	 * This the base cosntructor
+	 * @param name
+	 * @param discount
+	 * @param discountType
+	 */
 	public Benefit(String name, int discount, DiscountType discountType) {
 		this.name = name;
 		this.discount = discount;
