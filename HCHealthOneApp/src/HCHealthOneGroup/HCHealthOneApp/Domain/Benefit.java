@@ -11,7 +11,7 @@ public class Benefit {
 	public DiscountType discountType;
 	
 	/**
-	 * This the base cosntructor
+	 * This the base Constructor
 	 * @param name
 	 * @param discount
 	 * @param discountType
