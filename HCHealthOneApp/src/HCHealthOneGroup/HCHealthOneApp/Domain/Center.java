@@ -1,10 +1,10 @@
 package HCHealthOneGroup.HCHealthOneApp.Domain;
 
 public class Center {
-	public String Name;
-	public String SquareFeet;
-	public String NumberofRooms;
-	public String CenterType;
+	private String Name;
+	private String SquareFeet;
+	private String NumberofRooms;
+	private String CenterType;
 	
 	/**
 	 * 
