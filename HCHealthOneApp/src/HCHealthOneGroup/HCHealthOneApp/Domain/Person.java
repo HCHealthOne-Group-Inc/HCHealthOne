@@ -1,13 +1,13 @@
 package HCHealthOneGroup.HCHealthOneApp.Domain;
 
 public class Person {
-	public String Address; 
-	public int dateOfBirth; 
-	public String LastName; 
-	public String FirstName;
-	public int identificationNumber;
-	public String Language;
-	public String SexAssignedAtBirth;
+	private String Address; 
+	private int dateOfBirth; 
+	private String LastName; 
+	private String FirstName;
+	private int identificationNumber;
+	private String Language;
+	private String SexAssignedAtBirth;
 	
 	/**
 	 * 
