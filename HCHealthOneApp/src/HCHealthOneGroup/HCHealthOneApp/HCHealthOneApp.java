@@ -18,5 +18,9 @@ public class HCHealthOneApp {
 		System.out.println("Hello world!");
 		Benefit benefit = new Benefit("Free Stuff", 50, DiscountType.Nominal);
 		System.out.println(benefit);
+		
+		Patient patientA = new Patient("001A");
+		System.out.println("This is chart number " + patientA.getChartNumber());
+		
 	}
 }
