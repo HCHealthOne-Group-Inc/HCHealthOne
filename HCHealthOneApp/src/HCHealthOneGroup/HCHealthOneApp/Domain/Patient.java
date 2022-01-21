@@ -2,8 +2,10 @@ package HCHealthOneGroup.HCHealthOneApp.Domain;
 
 public class Patient {
 	
-	String chartNumber;
-	PrimaryProvider primaryProvider;
+	private String chartNumber;
+	private PrimaryProvider primaryProvider;
+	private String PreexistingConditions;
+	
 
 	/**
 	 * Constructor
@@ -21,4 +23,19 @@ public class Patient {
 		return chartNumber;
 	}
 
+	public String GetRiskLevel(String PreexistingConditions) {
+		
+		return PreexistingConditions;
+	}
+	
+	public void ChangePrimaryProvider (PrimaryProvider primaryProvider) {
+		
+
+	}
+	
+	public String GetPreexistingConditions() {
+		
+		
+	}
+	
 }

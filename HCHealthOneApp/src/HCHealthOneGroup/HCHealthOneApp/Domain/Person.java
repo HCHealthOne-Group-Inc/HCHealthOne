@@ -5,6 +5,7 @@ public class Person {
 	private int dateOfBirth; 
 	private String LastName; 
 	private String FirstName;
+	private int SSN;
 	private int identificationNumber;
 	private String Language;
 	private String SexAssignedAtBirth;
@@ -14,8 +15,10 @@ public class Person {
 	 * @param age to display the age
 	 * @param x show the age grabbed from the data
 	 */
-	public void Age(String age, int x) {
-		//get patient's age 
+	public int Age(int dateofBirth) {
+		//get patient's age
+	    int PersonAge = 0;
+		return PersonAge;
 	}
 	
 	public void Address() {
