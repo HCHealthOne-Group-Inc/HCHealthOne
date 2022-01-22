@@ -9,27 +9,18 @@ package HCHealthOneGroup.HCHealthOneApp.Domain;
  */
 import java.io.*;
 
-public class PCPVisit {
+public class PCPVisit extends ServiceBenefit {
+
+	private String providerType;
+
+	public PCPVisit(String name, int discount, DiscountType discountType, String startDate, String endDate,
+			String providerType) {
+		super(name, discount, discountType, startDate, endDate);
+		this.providerType = providerType;
+	}
 
 	/**
-	 * 
+	 * Implement abstract calculate benefit
 	 */
-	
-	static String ProviderType;
-	
-	static void myMetPCPType() {
-		System.out.println ("Provider Type: " + ProviderType);
-	}
-	
-	public static void  main(String [] args ) {
-		
-		myMetPCPType(); //I am invoking my method toprint the pcptype attribute 
-		
-	};
-	public PCPVisit() {
-		// TODO Auto-generated constructor stub
-	System.out.println("PCPVisit Constructor called");
-	}
-    
-}
 
+}

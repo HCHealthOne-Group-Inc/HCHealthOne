@@ -19,8 +19,22 @@ public class HCHealthOneApp {
 		Benefit benefit = new Benefit("Free Stuff", 50, DiscountType.Nominal);
 		System.out.println(benefit);
 		
-		Patient patientA = new Patient("001A");
-		System.out.println("This is chart number " + patientA.getChartNumber());
 		
+		Address anAddress = new Address("113 22nd Ave", "STE 4", "Miami", "Fl", "33125", "USA");
+		
+		Person aPerson = new Person("Doe", "Jane", "01/01/2021", anAddress);
+		int age = aPerson.Age();
+		
+		Patient  aPatient = new Patient("Doe", "Jhon", "01/01/2021", anAddress, "CHART002" );
+		
+		System.out.println("The age is " + age);
+		System.out.println("The person full address is " + aPerson.GetAddress().GetFullAddress());
+		
+		System.out.println("Patient + " + aPatient.FullName() + " age is " + age);
+		System.out.println("The Patient full address is " + aPerson.GetAddress().GetFullAddress());
+
+		Center aCenter = new Center("HCOneCenter", anAddress);
+		
+		Benefit aBenefit = new Benefit("Great", 10, DiscountType.Nominal);
 	}
 }

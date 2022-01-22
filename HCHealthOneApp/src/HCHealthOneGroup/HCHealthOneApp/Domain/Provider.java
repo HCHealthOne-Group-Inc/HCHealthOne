@@ -2,12 +2,11 @@ package HCHealthOneGroup.HCHealthOneApp.Domain;
 
 public class Provider {
 
-	private int SpecialtyCode ;
-	private String NationalProviderIdentifier;
-	private int MedicareNumber;
-	private int MedicaidNumber;
-	private int DEANumber;
-	
+	private int specialtyCode ;
+	private String nationalProviderIdentifier;
+	private int medicareNumber;
+	private int medicaidNumber;
+	private int deaNumber;
 	
 	public boolean CanSeeMedicaidPatient (int MedicaidNumber) {
 		
@@ -31,7 +30,5 @@ public class Provider {
 		boolean CanPrescribeDrugs = false ;
 		
 		return CanPrescribeDrugs;
-
-
-	
+    }
 }

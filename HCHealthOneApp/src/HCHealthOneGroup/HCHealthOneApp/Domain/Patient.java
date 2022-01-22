@@ -1,17 +1,17 @@
 package HCHealthOneGroup.HCHealthOneApp.Domain;
 
-public class Patient {
+public class Patient extends Person {
 	
 	private String chartNumber;
-	private PrimaryProvider primaryProvider;
 	private String PreexistingConditions;
+	private Provider primaryProvider;
 	
-
 	/**
 	 * Constructor
 	 * @param chartNumber
 	 */
-	public Patient(String chartNumber) {
+	public Patient(String lastName, String firstName, String dateOfBirth, Address address, String chartNumber) {
+		super(lastName, firstName, dateOfBirth, address);
 		this.chartNumber = chartNumber;
 	}
 	
@@ -28,14 +28,12 @@ public class Patient {
 		return PreexistingConditions;
 	}
 	
-	public void ChangePrimaryProvider (PrimaryProvider primaryProvider) {
-		
-
+	public void ChangePrimaryProvider (Provider primaryProvider) {
+		this.primaryProvider = primaryProvider;
 	}
 	
 	public String GetPreexistingConditions() {
-		
-		
+		return "SomePreExistingConditions";
 	}
 	
 }

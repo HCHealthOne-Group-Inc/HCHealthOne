@@ -8,19 +8,33 @@ package HCHealthOneGroup.HCHealthOneApp.Domain;
  *
  */
 public class Address {
-	private String Line1;
-	private String Line2;
-	private String City;
-	private String State;
-	private String Country;
-	private int zipcode;
 	
-	public void GetFullAddress() {
-		
+	private String line1;
+	private String line2;
+	private String city;
+	private String state;
+	private String country;
+	private String zipcode;
+	
+	public Address(String line1, String line2, String city, String state, String zipcode, String country) 
+	{
+		this.line1 = line1;
+		this.line2 = line2;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+	}
+	
+	public String GetFullAddress() {
+		return this.line1 + " " + this.line2 + " " + this.city  + " " +  this.state  + " " +  this.getZipcode()  + " " +  this.country;
 	}
 	
 	public void GetCoordinates() {
 		
+	}
+
+	public String getZipcode() {
+		return zipcode;
 	}
 	
 

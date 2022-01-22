@@ -4,7 +4,7 @@ package HCHealthOneGroup.HCHealthOneApp.Domain;
  * @author xmachin
  *
  */
-public class Benefit {
+public abstract class Benefit {
 
 	public String name;
 	public int discount;
@@ -21,6 +21,7 @@ public class Benefit {
 		this.discount = discount;
 		this.discountType = discountType;
 	}
+	
 
 	@Override
 	public  String toString() {

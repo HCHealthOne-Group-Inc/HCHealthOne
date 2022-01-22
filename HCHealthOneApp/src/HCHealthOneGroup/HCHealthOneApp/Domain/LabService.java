@@ -1,38 +1,17 @@
 package HCHealthOneGroup.HCHealthOneApp.Domain;
 
-import java.io.PrintStream;
+public class LabService extends ServiceBenefit {
 
-public class LabService {
+	private String labcode;
 
-	static //atributes  
-	String code1="Blood Test";
-	static String code2 ="Urine";
-	static String code3 ="Hepatic Panel";
-	
-			
-	//methods   list LAB CODES static methods is possible to call without creating an object
-	
-	static void MyMethLabcodes () {
-		System.out.println(code1);
-		System.out.println(code2);
-		System.out.println(code3);
-		
-		
-		
+	public LabService(String name, int discount, DiscountType discountType, String startDate, String endDate,
+			String labCode) {
+		super(name, discount, discountType, startDate, endDate);
+		this.labcode = labCode;
 	}
-	
-	public LabService() {
-		// TODO Auto-generated constructor stub not invoking the constructor
-	}
-    
-	//Inside MAIN i CALL mystatic method
-	
-	public static void main (String [] args) {
-		
-		
-		MyMethLabcodes();  //will print my labs codesas is static method does not need an object
-		
-	 	
-    	 
-     }//here closed void main
+
+	/**
+	 * Implement abstract calculate benefit
+	 */
+
 }

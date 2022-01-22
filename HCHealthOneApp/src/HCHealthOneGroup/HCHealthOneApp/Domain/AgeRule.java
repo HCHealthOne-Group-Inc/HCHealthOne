@@ -13,12 +13,14 @@ public class AgeRule extends Rule  {
 	public AgeRule(String ruleName, int minAge, int maxAge) {
 		super(ruleName);
 		this.minAge = minAge;
-		this.maxAge = minAge;
+		this.maxAge = maxAge;
 	}
 	
 	@Override
 	boolean appliesTo(Patient patient) {
 		// TODO Auto-generated method stub
+		if (patient.Age() > maxAge) return false;
+		
 		return false;
 	}
 }

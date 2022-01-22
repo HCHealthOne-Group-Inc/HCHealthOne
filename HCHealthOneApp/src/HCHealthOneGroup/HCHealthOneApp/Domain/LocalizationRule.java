@@ -16,6 +16,8 @@ public class LocalizationRule extends Rule {
 
 	@Override
 	boolean appliesTo(Patient patient) {
+		if(patient.GetAddress().getZipcode() == this.zipCode) return true;
+		
 		return false;
 	}
 }

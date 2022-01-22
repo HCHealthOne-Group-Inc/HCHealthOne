@@ -9,11 +9,19 @@ package HCHealthOneGroup.HCHealthOneApp.Domain;
  */
 public class Eligibility {
 
-	private String Patient;
-    private String InsurancePlan; 
+	private Patient patient;
+    private InsurancePlan insurancePlan; 
     
-    public void IsEligible() {
+    public Eligibility(Patient patient, InsurancePlan insurancePlan) {
+    	this.patient = patient;
+    	this.insurancePlan = insurancePlan;
+    }
     
+    /**
+     * If the patient is eligible for the plan
+     */
+    public boolean IsEligible() {
+    	return false;
     }
 }
 

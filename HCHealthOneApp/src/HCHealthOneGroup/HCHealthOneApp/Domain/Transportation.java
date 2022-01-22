@@ -1,9 +1,17 @@
 package HCHealthOneGroup.HCHealthOneApp.Domain;
 
-public class Transportation {
+public class Transportation extends ServiceBenefit {
 
-	public Transportation() {
-		// TODO Auto-generated constructor stub
+	private int numberOfTrips;
+
+	public Transportation(String name, int discount, DiscountType discountType, String startDate, String endDate,
+			int numberOfTrips) {
+		super(name, discount, discountType, startDate, endDate);
+
+		this.numberOfTrips = numberOfTrips;
 	}
+
+	
+	// TODO: Implement abstract calculate the discount
 
 }
