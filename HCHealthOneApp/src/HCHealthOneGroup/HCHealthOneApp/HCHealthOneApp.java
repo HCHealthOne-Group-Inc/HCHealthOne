@@ -16,7 +16,7 @@ public class HCHealthOneApp {
 	public static void main(String[] args) 
 	{
 		System.out.println("Hello world!");
-		Benefit benefit = new Benefit("Free Stuff", 50, DiscountType.Nominal);
+		Benefit benefit = new Transportation("Free Stuff", 50, DiscountType.Nominal, "01/01/2021", "12/31/2022", 50);
 		System.out.println(benefit);
 		
 		
@@ -34,7 +34,6 @@ public class HCHealthOneApp {
 		System.out.println("The Patient full address is " + aPerson.GetAddress().GetFullAddress());
 
 		Center aCenter = new Center("HCOneCenter", anAddress);
-		
-		Benefit aBenefit = new Benefit("Great", 10, DiscountType.Nominal);
+
 	}
 }

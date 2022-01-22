@@ -96,6 +96,12 @@ public class ServiceBenefit extends Benefit {
 		}
 		return discount;
 	}
+
+	@Override
+	void CalculateDiscount() {
+		// TODO Auto-generated method stub
+		
+	}
 	}
 
 

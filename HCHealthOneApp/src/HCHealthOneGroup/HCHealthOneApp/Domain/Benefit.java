@@ -22,7 +22,8 @@ public abstract class Benefit {
 		this.discountType = discountType;
 	}
 	
-
+    abstract void CalculateDiscount();
+	
 	@Override
 	public  String toString() {
 		return "This Benefit is named: " + this.name + " with discount " + discount + " " + discountType;
