@@ -1,50 +1,69 @@
 package HCHealthOneGroup.HCHealthOneApp.Domain;
 
+import java.time.LocalDate;
 
 public class Person {
-	
-	private String dateOfBirth; 
-	private String lastName; 
+
+	private LocalDate dateOfBirth;
+	private String lastName;
 	private String firstName;
-	private int ssn;
-	private int identificationNumber;
+	private String ssn;
+	private String identificationNumber;
 	private String language;
 	private String sexAssignedAtBirth;
-	
-	private Address address; 
-	
-	public Person(String lastName, String firstName, String dateOfBirth, Address address) 
-	{
+
+	private Address address;
+
+	public Person(String lastName, String firstName, LocalDate dateOfBirth, Address address) {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.dateOfBirth = dateOfBirth;
 		this.address = address;
 	}
-	
-	public Person(int ssn) {
+
+	public Person(String ssn) {
 		this.ssn = ssn;
 	}
-	
+
 	/**
+	 * Returns the Patient's Age
 	 * 
 	 * @param age to display the age
-	 * @param x show the age grabbed from the data
 	 */
-	public int Age() {
-		//get patient's age
-		// 
-	    int PersonAge = 99;
-		return PersonAge;
+	public int GetAge() {
+		return LocalDate.now().getYear() - this.dateOfBirth.getYear();
 	}
-	
+
+	/***
+	 * Gets the Address of the person
+	 * @return
+	 */
 	public Address GetAddress() {
-		//get patient's current address
+		// get patient's current address
 		return this.address;
 	}
-	
+
+	/***
+	 * Get the Full Name of the person
+	 * @return
+	 */
 	public String FullName() {
-		//get patient's full name
+		// get patient's full name
 		return this.firstName + " " + this.lastName;
 	}
-	
+
+	/**
+	 * Get the person Income
+	 * 
+	 * @return
+	 */
+	public double CalculateIncome() {
+		int age = this.GetAge();
+		if (age >= 18 && age <= 65)
+			return 65000;
+		if (age > 65)
+			return 15000;
+		return 0;
+	}
+
 }

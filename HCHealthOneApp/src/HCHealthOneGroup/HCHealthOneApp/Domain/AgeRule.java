@@ -19,8 +19,8 @@ public class AgeRule extends Rule  {
 	@Override
 	boolean appliesTo(Patient patient) {
 		// TODO Auto-generated method stub
-		if (patient.Age() > maxAge) return false;
+		if (patient.GetAge() < minAge || patient.GetAge() > maxAge) return false;
 		
-		return false;
+		return true;
 	}
 }

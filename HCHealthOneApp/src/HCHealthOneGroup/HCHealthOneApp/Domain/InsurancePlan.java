@@ -1,5 +1,6 @@
 package HCHealthOneGroup.HCHealthOneApp.Domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,9 +17,15 @@ public class InsurancePlan {
 
 	private List<Rule> rules;
 	private List<Benefit> benefits;
+	private List<Provider> credentialedProviders;
+
+	public InsurancePlan() {
+		this.credentialedProviders = new ArrayList<Provider>();
+	}
 
 	public InsurancePlan(String name, String carrier, String insuranceType, List<Rule> rules,
 			List<Benefit> benefitList) {
+		this();
 		this.name = name;
 		this.insuranceType = insuranceType;
 		this.carrier = carrier;
@@ -27,18 +34,59 @@ public class InsurancePlan {
 
 	/**
 	 * Returns the list of benefits associated to the insurance
+	 * 
 	 * @return
 	 */
 	public List<Benefit> GetBenefits() {
 		return this.benefits;
 	}
-	
+
 	/**
 	 * Returns the list of Rules associated to the insurance
+	 * 
 	 * @return
 	 */
 	public List<Rule> GetRules() {
 		return this.rules;
+	}
+
+	/**
+	 * Create benefit
+	 */
+	public void CreateBenefit() {
+		// TODO Implement Method
+	}
+
+	public void CreateRule() {
+		// TODO Create Rule
+	}
+
+	/**
+	 * Provides a policy from the Plan to a Patient
+	 * 
+	 * @return a policy
+	 */
+	public Policy ProvidePolicy() {
+		// TODO Implement Methods
+		return null;
+	}
+
+	public double CalculateServiceDiscount() {
+		// TODO Implement Methods
+		return 0;
+	}
+
+	/**
+	 * Credential Provider with the Insurance plan
+	 * 
+	 * @param provider
+	 */
+	public void CredentialProvider(Provider provider) {
+		this.credentialedProviders.add(provider);
+	}
+	
+	public void RenewBenefit(Benefit benefit) {
+		//TODO renew the benefit
 	}
 
 }
