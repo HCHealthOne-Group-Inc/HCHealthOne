@@ -8,12 +8,13 @@ package HCHealthOneGroup.HCHealthOneApp.Domain;
  *
  */
 import java.io.*;
+import java.time.LocalDate;
 
 public class PCPVisit extends ServiceBenefit {
 
 	private String providerType;
 
-	public PCPVisit(String name, int discount, DiscountType discountType, String startDate, String endDate,
+	public PCPVisit(String name, int discount, DiscountType discountType, LocalDate startDate, LocalDate endDate,
 			String providerType) {
 		super(name, discount, discountType, startDate, endDate);
 		this.providerType = providerType;

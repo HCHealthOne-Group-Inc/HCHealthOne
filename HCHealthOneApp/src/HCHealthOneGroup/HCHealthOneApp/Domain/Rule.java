@@ -17,4 +17,8 @@ public abstract class Rule {
 	 * @return true when applies, false when does not apply
 	 */
 	abstract boolean appliesTo(Patient patient);
+
+	public String getName() {
+		return name;
+	}
 }
