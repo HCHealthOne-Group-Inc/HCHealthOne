@@ -21,4 +21,9 @@ public abstract class Rule {
 	public String getName() {
 		return name;
 	}
+	
+	@Override
+	public String toString() {
+		return "Rule " + this.name;
+	}
 }

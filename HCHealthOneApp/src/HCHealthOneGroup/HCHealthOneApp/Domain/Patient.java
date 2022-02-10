@@ -7,6 +7,7 @@ public class Patient extends Person {
 	private String chartNumber;
 	private String PreexistingConditions;
 	private Provider primaryProvider;
+	private Policy policy;
 
 	/**
 	 * Constructor
@@ -42,6 +43,14 @@ public class Patient extends Person {
 	public Center FindClosestCenter() {
 		// TODO Implement this method maybe move it away
 		return null;
+	}
+
+	public Policy getPolicy() {
+		return policy;
+	}
+
+	public void setPolicy(Policy policy) {
+		this.policy = policy;
 	}
 
 }

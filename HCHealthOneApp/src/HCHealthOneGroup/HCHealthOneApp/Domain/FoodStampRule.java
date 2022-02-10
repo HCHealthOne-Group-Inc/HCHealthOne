@@ -15,9 +15,18 @@ public class FoodStampRule extends Rule {
 		this.income = income;
 	}
 	
+	/**
+	 * If the income of the patients is less than the income
+	 * returns true
+	 */
 	@Override
 	boolean appliesTo(Patient patient) {
-		// TODO Auto-generated method stub
-		return false;
+		// 
+		return patient.CalculateIncome() <= this.income;
+	}
+	
+	@Override 
+	public String toString() {
+		return "FoodStampRule " + this.name + "|income:" + String.valueOf(this.income);
 	}
 }

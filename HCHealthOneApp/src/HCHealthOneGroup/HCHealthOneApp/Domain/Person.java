@@ -63,7 +63,7 @@ public class Person {
 		if (age >= 18 && age <= 65)
 			return 65000;
 		if (age > 65)
-			return 15000;
+			return 1000;
 		return 0;
 	}
 

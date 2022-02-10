@@ -30,6 +30,7 @@ public class InsurancePlan {
 		this.insuranceType = insuranceType;
 		this.carrier = carrier;
 		this.benefits = benefitList;
+		this.rules = rules;
 	}
 
 	/**
@@ -66,9 +67,9 @@ public class InsurancePlan {
 	 * 
 	 * @return a policy
 	 */
-	public Policy ProvidePolicy() {
-		// TODO Implement Methods
-		return null;
+	public Policy ProvidePolicy(Patient patient) {
+		Policy p = new Policy(1, patient, this);
+		return p;
 	}
 
 	public double CalculateServiceDiscount() {
@@ -87,6 +88,16 @@ public class InsurancePlan {
 	
 	public void RenewBenefit(Benefit benefit) {
 		//TODO renew the benefit
+	}
+	
+	@Override
+	public String toString() 
+	{
+		return this.getName() + " | " + this.insuranceType + " | " + this.carrier  + " |Benefits " + String.valueOf(this.benefits.size()); //  + " |Rules " + String.valueOf(this.rules.size()) ;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 }

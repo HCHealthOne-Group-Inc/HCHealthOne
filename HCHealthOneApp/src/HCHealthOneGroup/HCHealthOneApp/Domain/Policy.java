@@ -9,7 +9,7 @@ public class Policy {
 	private Patient patient;
 	private InsurancePlan insurancePlan;
 	
-	public void Policy(int policyNumber, Patient patient, InsurancePlan insurancePlan) 
+	public Policy(int policyNumber, Patient patient, InsurancePlan insurancePlan) 
 	{
 		this.policyNumber = policyNumber;
 		this.patient = patient;

@@ -23,4 +23,9 @@ public class AgeRule extends Rule  {
 		
 		return true;
 	}
+	
+	@Override 
+	public String toString() {
+		return "AgeRule " + this.name + "|minAge:" + String.valueOf(minAge) + "|maxAge:" + String.valueOf(maxAge);
+	}
 }

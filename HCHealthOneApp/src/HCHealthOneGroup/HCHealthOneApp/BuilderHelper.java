@@ -3,6 +3,7 @@ package HCHealthOneGroup.HCHealthOneApp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import HCHealthOneGroup.HCHealthOneApp.Domain.AgeRule;
 import HCHealthOneGroup.HCHealthOneApp.Domain.Benefit;
@@ -60,7 +61,7 @@ public class BuilderHelper {
 
 		PCPVisit aPCPVisitBenefitLevel3 = new PCPVisit("PCP Visit Level 3", 20, DiscountType.Percentage,
 				LocalDate.of(2021, 1, 1), LocalDate.of(2022, 12, 31), "Specialty2");
-		benefits.add(aPCPVisitBenefitLevel1);
+		benefits.add(aPCPVisitBenefitLevel3);
 
 		return benefits;
 	}
@@ -86,7 +87,7 @@ public class BuilderHelper {
 		LocalizationRule westchesterLocalizationRule = new LocalizationRule("Westchester Level 3", "33165");
 		rules.add(westchesterLocalizationRule);
 
-		FoodStampRule foodStampRule = new FoodStampRule("Food Stamp Level 1", 100);
+		FoodStampRule foodStampRule = new FoodStampRule("Food Stamp Level 1", 10000);
 		rules.add(foodStampRule);
 
 		return rules;
@@ -96,15 +97,47 @@ public class BuilderHelper {
 
 		List<Benefit> allBenefits = GetBenefits();
 		List<Rule> allRules = GetRules();
-		
+
 		String levelStr = "Level " + String.valueOf(level);
 
-		List<Benefit> level1Benefits = allBenefits.stream().filter(p -> p.name.contains(levelStr)).toList();
-		List<Rule> level1Rules = allRules.stream().filter(p -> p.getName().contains(levelStr)).toList();
+		List<Benefit> calculatedLevelBenefits = allBenefits.stream().filter(p -> p.name.contains(levelStr)).toList();
+		List<Rule> calculatedRules = allRules.stream().filter(p -> p.getName().contains(levelStr)).toList();
 
-		InsurancePlan insurancePlan = new InsurancePlan("Insurance Level 1", "COM", "Private", allRules, allBenefits);
+		InsurancePlan insurancePlan = new InsurancePlan(
+				getAlphaNumericString(3) + " Insurance Level " + String.valueOf(level), "COM", "Private",
+				calculatedRules, calculatedLevelBenefits);
 
 		return insurancePlan;
+	}
+
+	/**
+	 * Gets a list of plans based on predefined parameters
+	 * @param size
+	 * @return
+	 */
+	public static List<InsurancePlan> GetInsurancePlanList(int size) {
+
+		List<InsurancePlan> plans = new ArrayList<InsurancePlan>();
+
+		for (int i = 1; i <= size; ++i) {
+			int level = (new Random()).nextInt(1, 4);
+			InsurancePlan plan = GetLevelInsurance(level);
+			plans.add(plan);
+		}
+
+		return plans;
+	}
+
+	private static String getAlphaNumericString(int n) {
+		String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		StringBuilder sb = new StringBuilder(n);
+
+		for (int i = 0; i < n; i++) {
+			int index = (int) (AlphaNumericString.length() * Math.random());
+			sb.append(AlphaNumericString.charAt(index));
+		}
+
+		return sb.toString();
 	}
 
 }
