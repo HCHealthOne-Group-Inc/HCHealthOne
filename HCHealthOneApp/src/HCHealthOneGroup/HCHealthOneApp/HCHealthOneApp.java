@@ -21,43 +21,85 @@ public class HCHealthOneApp {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Wellcome to our Marketplace!");
-		Benefit benefit = new Transportation("Free Stuff", 50, DiscountType.Nominal, LocalDate.of(2021, 1, 1),
-				LocalDate.of(2022, 12, 31), 50);
-		System.out.println(benefit);
-
+		
 		Address anAddress = new Address("113 22nd Ave", "STE 4", "Miami", "Fl", "33175", "USA");
 		Person aPerson = new Person("Doe", "Jane", LocalDate.of(1900, 1, 1), anAddress);
 		int age = aPerson.GetAge();
 		Patient aPatient = new Patient("Doe", "Jhon", LocalDate.of(1900, 1, 1), anAddress, "CHART002");
 
 		Center aCenter = new Center("HCOneCenter", anAddress);
-		System.out.println(aCenter);
+//		System.out.println(aCenter);
 
 //		InsurancePlan planLevel1 = BuilderHelper.GetLevelInsurance(2);
 //		System.out.println(planLevel1);
 
 		List<InsurancePlan> planList = BuilderHelper.GetInsurancePlanList(10);
 
-		Market estrellaInsurance = new Market();
+		MarketPlace estrellaInsurance = new MarketPlace();
 		estrellaInsurance.AddInsurance(planList);
 
+		System.out.println("See our great selection of Insurance Plans");
+		DisplayInsuranceOption(estrellaInsurance.getPlans());
+		
 		List<InsurancePlan> planOptions = estrellaInsurance.GetEligiblePlans(aPatient);
-
 		System.out.println(
-				aPatient.FullName() + " has " + String.valueOf(planOptions.size()) + " Insurance Plan Options");
+				aPatient.FullName() + " is eligible for " + String.valueOf(planOptions.size()) + " Insurance Plans");
+
+		DisplayInsuranceOption(planOptions);
 
 		if (planOptions.size() > 0) {
-			int index = (new Random()).nextInt(0, planOptions.size() - 1);
+			// Randomly select a Plan from the eligible plans
+			int index = 1;
+			if (planOptions.size() > 1)
+				index = (new Random()).nextInt(0, planOptions.size() - 1);
+
 			InsurancePlan selectedPlan = planOptions.get(index);
 
-			System.out.println(aPatient.FullName() + " Selected insurace " + selectedPlan.getName());
+			System.out.println(aPatient.FullName() + " Selected " + selectedPlan.getName() + " as primary care ");
+			System.out.println("Benefits : ");
 			estrellaInsurance.ListBenefits(selectedPlan.getName());
 
+			// Set the policy for the patient
 			aPatient.setPolicy(selectedPlan.ProvidePolicy(aPatient));
+
+			// Display list of providers for selected insurance
+			System.out.println("See our amazing provider list that work with " + selectedPlan);
+			DisplayInsuranceProviders(selectedPlan.getCredentialedProviders());
+
+			// Select the provider for the patient
+			System.out.println(aPatient.FullName() + " Selected " + selectedPlan.GetDefaultProvider());
+			aPatient.ChangePrimaryProvider(selectedPlan.GetDefaultProvider());
+
+		}
+	}
+
+	private static void DisplayInsuranceOption(List<InsurancePlan> planOptions) {
+		if (planOptions != null && planOptions.size() > 0) {
+			int i = 1;
+			System.out.println("Options ");
+			for (InsurancePlan plan : planOptions) {
+				System.out.println("	" + String.valueOf(i) + " - " + plan);
+				i++;
+			}
+		}
+	}
+
+	private static void DisplayInsuranceProviders(List<Provider> providers) {
+		if (providers != null && providers.size() > 0) {
+			int i = 1;
+			System.out.println("Providers ");
+			for (Provider provider : providers) {
+				System.out.println("	" + String.valueOf(i) + " - " + provider);
+				i++;
+			}
 		}
 	}
 
 	public static void DumpTest() {
+
+//		Benefit benefit = new Transportation("Free Stuff", 50, DiscountType.Nominal, LocalDate.of(2021, 1, 1),
+//		LocalDate.of(2022, 12, 31), 50);
+//System.out.println(benefit);
 
 //		System.out.println("The age is " + age);
 //		System.out.println("The person full address is " + aPerson.GetAddress().GetFullAddress());

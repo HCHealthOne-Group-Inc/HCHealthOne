@@ -3,6 +3,8 @@ package HCHealthOneGroup.HCHealthOneApp.Domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import HCHealthOneGroup.HCHealthOneApp.BuilderHelper;
+
 /**
  * Represents the Insurance Plan
  * 
@@ -68,7 +70,9 @@ public class InsurancePlan {
 	 * @return a policy
 	 */
 	public Policy ProvidePolicy(Patient patient) {
-		Policy p = new Policy(1, patient, this);
+		
+		String policyNumber = BuilderHelper.getAlphaNumericString(10);
+		Policy p = new Policy(policyNumber, patient, this);
 		return p;
 	}
 
@@ -83,8 +87,17 @@ public class InsurancePlan {
 	 * @param provider
 	 */
 	public void CredentialProvider(Provider provider) {
-		this.credentialedProviders.add(provider);
+		this.getCredentialedProviders().add(provider);
 	}
+	
+	/**
+	 * Credential a group of providers
+	 * @param providers
+	 */
+	public void CredentialProviders(List<Provider> providers) {
+		this.getCredentialedProviders().addAll(providers);
+	}
+
 	
 	public void RenewBenefit(Benefit benefit) {
 		//TODO renew the benefit
@@ -98,6 +111,19 @@ public class InsurancePlan {
 
 	public String getName() {
 		return name;
+	}
+	
+	public Provider GetDefaultProvider() {
+		if (this.getCredentialedProviders().size() == 0) return null;
+		return this.getCredentialedProviders().get(0); //Returns the first provider in the list
+	}
+
+	/**
+	 * Get Providers Credentialed in the insurance
+	 * @return
+	 */
+	public List<Provider> getCredentialedProviders() {
+		return credentialedProviders;
 	}
 
 }

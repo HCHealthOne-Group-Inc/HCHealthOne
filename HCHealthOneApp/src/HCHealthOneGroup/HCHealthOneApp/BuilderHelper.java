@@ -14,9 +14,16 @@ import HCHealthOneGroup.HCHealthOneApp.Domain.LabService;
 import HCHealthOneGroup.HCHealthOneApp.Domain.LocalizationRule;
 import HCHealthOneGroup.HCHealthOneApp.Domain.MedicationFormulary;
 import HCHealthOneGroup.HCHealthOneApp.Domain.PCPVisit;
+import HCHealthOneGroup.HCHealthOneApp.Domain.Provider;
 import HCHealthOneGroup.HCHealthOneApp.Domain.Rule;
 import HCHealthOneGroup.HCHealthOneApp.Domain.Transportation;
 
+/**
+ * Class to help build test data
+ * 
+ * @author xmachin
+ *
+ */
 public class BuilderHelper {
 
 	private static List<Benefit> GetBenefits() {
@@ -112,23 +119,26 @@ public class BuilderHelper {
 
 	/**
 	 * Gets a list of plans based on predefined parameters
+	 * 
 	 * @param size
 	 * @return
 	 */
 	public static List<InsurancePlan> GetInsurancePlanList(int size) {
 
 		List<InsurancePlan> plans = new ArrayList<InsurancePlan>();
+		List<Provider> providers = GetProviders(size);
 
 		for (int i = 1; i <= size; ++i) {
 			int level = (new Random()).nextInt(1, 4);
 			InsurancePlan plan = GetLevelInsurance(level);
+			plan.CredentialProviders(providers);
 			plans.add(plan);
 		}
 
 		return plans;
 	}
 
-	private static String getAlphaNumericString(int n) {
+	public static String getAlphaNumericString(int n) {
 		String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		StringBuilder sb = new StringBuilder(n);
 
@@ -140,4 +150,29 @@ public class BuilderHelper {
 		return sb.toString();
 	}
 
+	/**
+	 * Get a list of n providers
+	 * 
+	 * @param n
+	 * @return
+	 */
+	public static List<Provider> GetProviders(int n) {
+
+		List<Provider> providers = new ArrayList<Provider>();
+
+		for (int i = 0; i < n; i++) {
+			providers.add(GetProvider());
+		}
+
+		return providers;
+	}
+
+	public static Provider GetProvider() {
+		Provider provider = new Provider("LastName_" + getAlphaNumericString(3),
+				"FirstName_" + getAlphaNumericString(3),
+				LocalDate.of(1980,1,1),
+				getAlphaNumericString(10));
+		//LocalDate.of(LocalDate.now().getYear() - (new Random()).nextInt(30, 50), 1, 1)
+		return provider;
+	}
 }

@@ -22,6 +22,10 @@ public class Person {
 		this.address = address;
 	}
 
+	public Person(String lastName, String firstName, LocalDate dateOfBirth) {
+		this(lastName, firstName, dateOfBirth, null);
+	}
+
 	public Person(String ssn) {
 		this.ssn = ssn;
 	}
@@ -37,6 +41,7 @@ public class Person {
 
 	/***
 	 * Gets the Address of the person
+	 * 
 	 * @return
 	 */
 	public Address GetAddress() {
@@ -46,6 +51,7 @@ public class Person {
 
 	/***
 	 * Get the Full Name of the person
+	 * 
 	 * @return
 	 */
 	public String FullName() {

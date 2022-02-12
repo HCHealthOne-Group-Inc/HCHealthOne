@@ -9,15 +9,15 @@ import java.util.List;
  * @author xmachin
  *
  */
-public class Market {
+public class MarketPlace {
 
 	private List<InsurancePlan> plans;
 
-	public Market() {
+	public MarketPlace() {
 		this.plans = new ArrayList<InsurancePlan>();
 	}
 
-	public Market(List<InsurancePlan> plans) {
+	public MarketPlace(List<InsurancePlan> plans) {
 		this.plans = plans;
 	}
 
@@ -32,7 +32,7 @@ public class Market {
 		List<InsurancePlan> eligiblePlans = new ArrayList<InsurancePlan>();
 
 		// Will go one by one of the insurances to evaluate if the patient is eligible
-		for (InsurancePlan plan : plans) {
+		for (InsurancePlan plan : getPlans()) {
 
 			if (new Eligibility(patient, plan).IsEligible())
 				eligiblePlans.add(plan);
@@ -47,11 +47,11 @@ public class Market {
 	 * @param plans
 	 */
 	public void AddInsurance(List<InsurancePlan> plans) {
-		this.plans.addAll(plans);
+		this.getPlans().addAll(plans);
 	}
 
 	public void ListBenefits(String planName) {
-		InsurancePlan plan = this.plans.stream().filter(p -> p.getName() == planName).findFirst().get();
+		InsurancePlan plan = this.getPlans().stream().filter(p -> p.getName() == planName).findFirst().get();
 
 		if (plan != null) {
 			System.out.println(plan + "  Benefit List ");
@@ -59,5 +59,9 @@ public class Market {
 				System.out.println(benefit);
 			}
 		}
+	}
+
+	public List<InsurancePlan> getPlans() {
+		return plans;
 	}
 }
