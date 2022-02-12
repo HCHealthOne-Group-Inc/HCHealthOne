@@ -111,8 +111,8 @@ public class BuilderHelper {
 		List<Rule> calculatedRules = allRules.stream().filter(p -> p.getName().contains(levelStr)).toList();
 
 		InsurancePlan insurancePlan = new InsurancePlan(
-				getAlphaNumericString(3) + " Insurance Level " + String.valueOf(level), "COM", "Private",
-				calculatedRules, calculatedLevelBenefits);
+				getRandomString(3) + " Insurance Level " + String.valueOf(level), "COM", "Private", calculatedRules,
+				calculatedLevelBenefits);
 
 		return insurancePlan;
 	}
@@ -138,13 +138,27 @@ public class BuilderHelper {
 		return plans;
 	}
 
-	public static String getAlphaNumericString(int n) {
-		String AlphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		StringBuilder sb = new StringBuilder(n);
+	public static String getRandomString(int n) {
+		String alphaNumericString = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		return getRandomString(n, alphaNumericString);
+	}
 
-		for (int i = 0; i < n; i++) {
-			int index = (int) (AlphaNumericString.length() * Math.random());
-			sb.append(AlphaNumericString.charAt(index));
+	/**
+	 * Random String build from numbers only
+	 * 
+	 * @param n
+	 * @return
+	 */
+	public static String getNumericString(int n) {
+		String numericStringSeed = "1234567890";
+		return getRandomString(n, numericStringSeed);
+	}
+
+	public static String getRandomString(int size, String availableCharacthers) {
+		StringBuilder sb = new StringBuilder(size);
+		for (int i = 0; i < size; i++) {
+			int index = (int) (availableCharacthers.length() * Math.random());
+			sb.append(availableCharacthers.charAt(index));
 		}
 
 		return sb.toString();
@@ -168,11 +182,8 @@ public class BuilderHelper {
 	}
 
 	public static Provider GetProvider() {
-		Provider provider = new Provider("LastName_" + getAlphaNumericString(3),
-				"FirstName_" + getAlphaNumericString(3),
-				LocalDate.of(1980,1,1),
-				getAlphaNumericString(10));
-		//LocalDate.of(LocalDate.now().getYear() - (new Random()).nextInt(30, 50), 1, 1)
+		Provider provider = new Provider("LastName_" + getRandomString(3), "FirstName_" + getRandomString(3),
+				LocalDate.of(LocalDate.now().getYear() - (new Random()).nextInt(30, 50), 1, 1), getNumericString(10));
 		return provider;
 	}
 }

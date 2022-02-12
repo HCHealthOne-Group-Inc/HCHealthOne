@@ -71,7 +71,7 @@ public class InsurancePlan {
 	 */
 	public Policy ProvidePolicy(Patient patient) {
 		
-		String policyNumber = BuilderHelper.getAlphaNumericString(10);
+		String policyNumber = BuilderHelper.getNumericString(10);
 		Policy p = new Policy(policyNumber, patient, this);
 		return p;
 	}

@@ -69,7 +69,6 @@ public class HCHealthOneApp {
 			// Select the provider for the patient
 			System.out.println(aPatient.FullName() + " Selected " + selectedPlan.GetDefaultProvider());
 			aPatient.ChangePrimaryProvider(selectedPlan.GetDefaultProvider());
-
 		}
 	}
 
@@ -97,6 +96,8 @@ public class HCHealthOneApp {
 
 	public static void DumpTest() {
 
+		System.out.println(String.valueOf(LocalDate.of(LocalDate.now().getYear() - (new Random()).nextInt(30, 50), 1, 1)));
+		
 //		Benefit benefit = new Transportation("Free Stuff", 50, DiscountType.Nominal, LocalDate.of(2021, 1, 1),
 //		LocalDate.of(2022, 12, 31), 50);
 //System.out.println(benefit);

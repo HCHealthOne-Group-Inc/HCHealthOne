@@ -5,31 +5,47 @@ import java.util.ArrayList;
 
 public class Provider extends Person {
 
-	private int specialtyCode;
+	private String specialtyCode;
 	private String nationalProviderIdentifier;
-	private int medicareNumber;
-	private int medicaidNumber;
-	private int deaNumber;
+	private String medicareNumber;
+	private String medicaidNumber;
+	private String deaNumber;
 	private ArrayList<InsurancePlan> credentialedInsurances;
 
 	public Provider(String lastName, String firstName, LocalDate dateOfBirth, String nationalProviderIdentifier) {
 		super(lastName, firstName, dateOfBirth);
 		this.credentialedInsurances = new ArrayList<InsurancePlan>();
 		this.nationalProviderIdentifier = nationalProviderIdentifier;
+		this.medicaidNumber = "";
+		this.medicareNumber = "";
+		this.deaNumber = "";
+		this.specialtyCode = "000XB00AX1";
 	}
 
-	public boolean CanSeeMedicaidPatient(int MedicaidNumber) {
-		boolean CanSeeMedicaidPatient = false;
+	/**
+	 * Checks if the provider can see patients with medicaid numbers
+	 * @return
+	 */
+	public boolean CanSeeMedicaidPatient() {
+		boolean CanSeeMedicaidPatient = this.medicaidNumber != ""; // If no medicaid number exists return false
 		return CanSeeMedicaidPatient;
 	}
 
-	public boolean CanSeeMedicarePatient(int MedicareNumber) {
-		boolean CanSeeMedicarePatient = false;
+	/**
+	 * Checks if the provider can see medicare patients
+	 * @return
+	 */
+	public boolean CanSeeMedicarePatient() {
+		boolean CanSeeMedicarePatient = this.medicareNumber != ""; // If no medicare number exists return false
 		return CanSeeMedicarePatient;
 	}
 
-	public boolean CanPrescribeDrugs(int DEANumber) {
-		boolean CanPrescribeDrugs = false;
+	/**
+	 * Checks if the provider can prescribe drugs
+	 * @return
+	 */
+	public boolean CanPrescribeDrugs() {
+		boolean CanPrescribeDrugs = this.deaNumber != ""; // If no dea number exists return false
 		return CanPrescribeDrugs;
 	}
 
@@ -50,5 +66,29 @@ public class Provider extends Person {
 	public String toString() {
 
 		return this.FullName() + " | NPI " + this.nationalProviderIdentifier;
+	}
+
+	public String getMedicareNumber() {
+		return medicareNumber;
+	}
+
+	public void setMedicareNumber(String medicareNumber) {
+		this.medicareNumber = medicareNumber;
+	}
+
+	public String getMedicaidNumber() {
+		return medicaidNumber;
+	}
+
+	public void setMedicaidNumber(String medicaidNumber) {
+		this.medicaidNumber = medicaidNumber;
+	}
+
+	public String getDeaNumber() {
+		return deaNumber;
+	}
+
+	public void setDeaNumber(String deaNumber) {
+		this.deaNumber = deaNumber;
 	};
 }
