@@ -35,13 +35,13 @@ public class HCHealthOneApp {
 
 		List<InsurancePlan> planList = BuilderHelper.GetInsurancePlanList(10);
 
-		MarketPlace estrellaInsurance = new MarketPlace();
-		estrellaInsurance.AddInsurance(planList);
+		MarketPlace insuranceMarketplace = new MarketPlace();
+		insuranceMarketplace.AddInsurances(planList);
 
 		System.out.println("See our great selection of Insurance Plans");
-		DisplayInsuranceOption(estrellaInsurance.getPlans());
+		DisplayInsuranceOption(insuranceMarketplace.getPlans());
 		
-		List<InsurancePlan> planOptions = estrellaInsurance.GetEligiblePlans(aPatient);
+		List<InsurancePlan> planOptions = insuranceMarketplace.GetEligiblePlans(aPatient);
 		System.out.println(
 				aPatient.FullName() + " is eligible for " + String.valueOf(planOptions.size()) + " Insurance Plans");
 
@@ -49,7 +49,7 @@ public class HCHealthOneApp {
 
 		if (planOptions.size() > 0) {
 			// Randomly select a Plan from the eligible plans
-			int index = 1;
+			int index = 0;
 			if (planOptions.size() > 1)
 				index = (new Random()).nextInt(0, planOptions.size() - 1);
 
@@ -57,7 +57,7 @@ public class HCHealthOneApp {
 
 			System.out.println(aPatient.FullName() + " Selected " + selectedPlan.getName() + " as primary care ");
 			System.out.println("Benefits : ");
-			estrellaInsurance.ListBenefits(selectedPlan.getName());
+			insuranceMarketplace.ListBenefits(selectedPlan.getName());
 
 			// Set the policy for the patient
 			aPatient.setPolicy(selectedPlan.ProvidePolicy(aPatient));

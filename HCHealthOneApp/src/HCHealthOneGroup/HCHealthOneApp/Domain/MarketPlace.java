@@ -42,14 +42,23 @@ public class MarketPlace {
 	}
 
 	/**
+	 * Add an insurance to the market
+	 * 
+	 * @param plans
+	 */
+	public void AddInsurance(InsurancePlan plan) {
+		this.getPlans().add(plan);
+	}
+
+	/**
 	 * Add insurances to the market
 	 * 
 	 * @param plans
 	 */
-	public void AddInsurance(List<InsurancePlan> plans) {
+	public void AddInsurances(List<InsurancePlan> plans) {
 		this.getPlans().addAll(plans);
 	}
-
+	
 	public void ListBenefits(String planName) {
 		InsurancePlan plan = this.getPlans().stream().filter(p -> p.getName() == planName).findFirst().get();
 
