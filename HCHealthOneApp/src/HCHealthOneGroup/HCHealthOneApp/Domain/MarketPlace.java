@@ -25,7 +25,7 @@ public class MarketPlace {
 	 * Gets the list of available insurances that are options for the patients
 	 * 
 	 * @param patient
-	 * @return
+	 * @return valid list of insurances
 	 */
 	public List<InsurancePlan> GetEligiblePlans(Patient patient) {
 
@@ -34,9 +34,13 @@ public class MarketPlace {
 		// Will go one by one of the insurances to evaluate if the patient is eligible
 		for (InsurancePlan plan : getPlans()) {
 
-			if (new Eligibility(patient, plan).IsEligible())
+			if (new Eligibility(patient, plan).IsEligible()) {
 				eligiblePlans.add(plan);
+				MarkInsuranceValid(plan);
+			}
 		}
+		
+		if(eligiblePlans.size() == 0) System.out.println("No insurances eligible for " + patient.FullName() + " sorry!! Come back later.");
 
 		return eligiblePlans;
 	}
@@ -72,5 +76,14 @@ public class MarketPlace {
 
 	public List<InsurancePlan> getPlans() {
 		return plans;
+	}
+	
+	/*
+	 * Makes an insurance Plan valid
+	 * @param insurancePlan
+	 */
+	public void MarkInsuranceValid(InsurancePlan insurancePlan) {
+		//TODO Implement Method
+//		System.out.println(insurancePlan + " is marked as valid" );
 	}
 }

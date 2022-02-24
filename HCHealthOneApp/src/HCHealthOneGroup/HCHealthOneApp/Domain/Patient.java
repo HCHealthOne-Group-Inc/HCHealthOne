@@ -53,4 +53,8 @@ public class Patient extends Person {
 		this.policy = policy;
 	}
 
+	public Provider getPrimaryProvider() {
+		return primaryProvider;
+	}
+
 }
